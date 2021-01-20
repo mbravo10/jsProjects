@@ -23,10 +23,10 @@ class MyForm extends React.Component {
             alert("Not a letter, try again");
         } else {
             this.setState({
-                items: [...this.state.items, this.state.input]
+                items: [...this.state.items, this.state.input],
+                input: ''
             })
             alert("You are submitting " + this.state.input);
-
         }
     }
 
@@ -36,23 +36,23 @@ class MyForm extends React.Component {
 
         return (
             <Container>
-                <Form >
+                <form>
                     <Form.Group controlId="todoInput">
                         <Form.Label>Items</Form.Label>
                         <Form.Control
                             size="sm"
                             type="text"
                             placeholder="Enter To-Do Item"
-                            onChange={this.myChangeHandler} />
+                            onSubmit={this.myChangeHandler} />
                     </Form.Group>
                     <Button 
                         variant="primary"
                         type="submit"
-                        onClick={this.mySubmitHandler}
+                        onSubmit={this.mySubmitHandler}
                         >
                         Submit
                     </Button>
-                </Form>
+                </form>
                 <ul>
                     {listItems}
                 </ul>
