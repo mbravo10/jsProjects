@@ -1,12 +1,18 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App.js';
+import React from 'react';
+
+const DATA = [
+  {id:"todo-0", name: "eat", completed: true },
+  {id:"todo-1", name: "sleep", completed: false },
+  {id:"todo-2", name: "repeat", completed: false }
+]
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App task={DATA} />
   </React.StrictMode>,
   document.getElementById('root')
 );
