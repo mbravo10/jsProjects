@@ -6,8 +6,13 @@ function Form(props){
 
   function handleSubmit(e) {
     e.preventDefault();
+    if(name === '' || Number.parseInt(name)){
+      alert('Enter a valid character');
+    }else{
     props.addTask(name);
+    }
     setName('');
+
   }
 
   function handleChange(e){
