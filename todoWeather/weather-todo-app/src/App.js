@@ -6,15 +6,24 @@ import React, { useState } from 'react';
 
 function App(props) {
 
-  
   const [tasks, setTasks] = useState(props.task);
   
-  const taskList = tasks.map((task) => (
+  function toggleTaskCompleted(id){
+    const updatedTasks = tasks.map(task => {
+      if(id === task.id){
+        return {...task, completed: !task.completed}
+      }
+      return task;
+    })
+    setTasks(updatedTasks);
+  }
+  const taskList = tasks.map(task => (
     <Todo 
     id={task.id} 
     name={task.name} 
     completed={task.completed}
     key={task.id}
+    toggleTaskCompleted={toggleTaskCompleted}
     />
     )
     );
