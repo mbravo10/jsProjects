@@ -5,9 +5,9 @@ import App from './App.js';
 import React from 'react';
 
 const DATA = [
-  {id:"todo-0", name: "eat", completed: true },
-  {id:"todo-1", name: "sleep", completed: false },
-  {id:"todo-2", name: "repeat", completed: false }
+  {id:"todo-0", name: "Eat", completed: true },
+  {id:"todo-1", name: "Sleep", completed: false },
+  {id:"todo-2", name: "Repeat", completed: false }
 ]
 
 ReactDOM.render(
