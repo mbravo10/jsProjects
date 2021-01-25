@@ -6,7 +6,7 @@ function Form(props){
 
   function handleSubmit(e) {
     e.preventDefault();
-    if(name === '' || Number.parseInt(name)){
+    if(name == null || Number.parseInt(name) || name === ''){
       alert('Enter a valid character');
     }else{
     props.addTask(name);
