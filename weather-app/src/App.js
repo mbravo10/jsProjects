@@ -6,6 +6,7 @@ import SignIn from './components/SignIn';
 
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
 import Stocks from './components/Stocks/stocks';
+import Home from './components/Home/Home';
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
       <div>
         <NavBar/>
         <Switch>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+
           <Route path="/home">
             <Weather/>
           </Route>
