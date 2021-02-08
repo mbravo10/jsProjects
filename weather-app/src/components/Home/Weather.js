@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { Card, CardGroup, Container, Col } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Card, CardGroup, Container, Col, Button } from 'react-bootstrap';
 import weatherIcon from './images/weather.jpg';
+import axios from 'axios';
 
 function Weather(){
+    const [weather, setWeather ] = useState('');
+
     return (
         <Container>
             <CardGroup>
@@ -13,6 +16,7 @@ function Weather(){
             <Card.Body>
                 <Card.Title>Current Weather</Card.Title>
                 <Card.Text>Weather from the 5 min</Card.Text>
+                <Card.Text>{weather}</Card.Text>
             </Card.Body>
             </Card>
 
