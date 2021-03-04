@@ -1,8 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import React, {useEffect, useState} from 'react';
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import Container from 'react-bootstrap/Container';
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import NavBar from './components/NavBar';
+import Teams from './components/Teams';
+import Home from './components/Home';
 
 function App() {
   const [apiResponse, setApiResponse] = useState('');
@@ -15,10 +16,16 @@ function App() {
   });
 
   return (
-      <Jumbotron>
-      <h1>Hello, world!</h1>
-      <p>{apiResponse}</p>
-      </Jumbotron>
+      <Router>
+      <NavBar/>
+        <Switch>
+          <Route exact path="/home" component={Home}/>
+          <Route exact path="/">
+            <Redirect to="/home"/>
+          </Route>
+            <Route path="/teams" component={Teams}/>
+        </Switch>
+      </Router>
   );
 }
 
