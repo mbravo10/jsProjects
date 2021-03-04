@@ -1,36 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
 
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = { apiResponse: "" };
-  }
+function App() {
+  const [apiResponse, setApiResponse] = useState('');
 
-  callAPI(){
-    fetch("http://localhost:9000/testAPI")
+  useEffect(() => {
+  fetch("http://localhost:9000/testAPI")
       .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }))
-      .catch(err => err);
-  }
+      .then(res => setApiResponse(res))
+      .catch(err => err)
+  });
 
-  componentDidMount(){
-    this.callAPI();
-  }
-
-  render() {
-    return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">Welcome to react</h1>
-        <p className="App-intro">{this.state.apiResponse}</p>
-      </header>
-      
-    </div>
-    )
-  }
+  return (
+      <Jumbotron>
+      <h1>Hello, world!</h1>
+      <p>{apiResponse}</p>
+      </Jumbotron>
+  );
 }
 
 export default App;
