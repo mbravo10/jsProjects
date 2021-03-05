@@ -1,19 +1,13 @@
 import './App.css';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
 import NavBar from './components/NavBar';
 import Teams from './components/Teams';
 import Home from './components/Home';
+import Standings from './components/Standings';
+import Forum from './components/Forum';
 
 function App() {
-  const [apiResponse, setApiResponse] = useState('');
-
-  useEffect(() => {
-  fetch("http://localhost:9000/testAPI")
-      .then(res => res.text())
-      .then(res => setApiResponse(res))
-      .catch(err => err)
-  });
 
   return (
       <Router>
@@ -23,7 +17,9 @@ function App() {
           <Route exact path="/">
             <Redirect to="/home"/>
           </Route>
-            <Route path="/teams" component={Teams}/>
+          <Route path="/teams" component={Teams}/>
+          <Route path="/standings" component={Standings}/>
+          <Route path="/discussion" component={Forum}/>
         </Switch>
       </Router>
   );
