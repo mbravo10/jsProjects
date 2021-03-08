@@ -6,7 +6,9 @@ const app = express();
 //Connect Databse
 connectDB();
 
-app.get('/', (req, res) => res.send('API Running'));
+app.get('/', (req, res) =>{ 
+    res.send('API Running')
+    });
 
 //Define Routes
 //A way to make the app methods much cleaner, we use app.use and inside the route we use we have the required method for each route 
