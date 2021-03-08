@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator/check');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 const bcrypt = require('bcryptjs');
 
 const User = require('../../models/User');
@@ -24,7 +26,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const {name, email, password} = req.body;
+    const { name, email, password } = req.body;
 
     try{
         /*See if user exists, encrypt user, return jswt
@@ -35,7 +37,10 @@ router.post(
 
         //Check if user exists
         if(user){
-            res.status(400).json({ errors: [{ msg: 'User already exists'}]});
+            return res.status(400).json({ 
+                errors: 
+                [{ msg: 'User already exists'}]
+            });
         }
 
         user = new User({
@@ -52,7 +57,21 @@ router.post(
         //Now save user
         await user.save();
 
-        res.send('User registered');
+        const payload = {
+            user: {
+                id: user.id
+            }
+        }
+
+        //Can decode payload from jwt.io
+        jwt.sign(
+            payload, 
+            config.get('jwtSecret'), 
+            {expiresIn : 36000}, 
+            (err, token) => {
+            if(err) throw err;
+            res.json({ token });
+        })
     }catch(err){
         console.log(err.message);
         res.status(500).send('Server Error');
