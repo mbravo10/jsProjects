@@ -9,7 +9,8 @@ const ProfileSchema = new mongoose.Schema({
         type: String
     },
     teams: {
-        type: [String]
+        type: [String],
+        required: true
     }
 });
 
