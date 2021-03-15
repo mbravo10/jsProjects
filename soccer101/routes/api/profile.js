@@ -114,4 +114,24 @@ router.get("/user/:user_id", async (req, res) => {
   }
 });
 
+//To create a route we do
+// @Route    Delete api/profile/
+// @Desc     Delete profiles, user, & posts
+// @access   Private
+
+router.delete("/", auth, async (req, res) => {
+  try {
+    //@todo - remove users posts
+
+    //Remove profile
+    await Profile.findOneAndRemove({ user: req.user.id });
+    //Remove user
+    await User.findOneAndRemove({ _id: req.user.id });
+    res.json({ msg: "User Deleted" });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = router;
