@@ -6,6 +6,7 @@ const config = require("config");
 const bcrypt = require("bcryptjs");
 
 const User = require("../../models/User");
+
 //To create a route we do
 // @Route    POST api/users
 // @Desc     Register user route
