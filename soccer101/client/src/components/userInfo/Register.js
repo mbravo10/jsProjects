@@ -16,12 +16,17 @@ export default function Register() {
     setFormData({ ...formData, [name]: value });
   };
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Success");
+  };
+
   return (
     <Fragment>
       <Container>
         <Row className="justify-content-md-center">
           <Col xs={8}>
-            <Form>
+            <Form onSubmit={onSubmit}>
               <Form.Group controlId="formName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
