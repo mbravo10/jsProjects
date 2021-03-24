@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [apiResponse, setApiResponse] = useState("Hey");
+  const [apiResponse, setApiResponse] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:5000/api/profile")
