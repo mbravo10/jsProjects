@@ -1,20 +1,36 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import "./styles/navBar.css";
 
 export default function NavBar() {
   return (
-    <Navbar bg="primary" expand="lg" variant="dark">
-      <Navbar.Brand href="/home">Home</Navbar.Brand>
-      <Nav className="mr-auto">
-        <Nav.Link href="/teams">Teams</Nav.Link>
-        <Nav.Link href="/standings">Standings</Nav.Link>
-        <Nav.Link href="/discussion">Forum</Nav.Link>
-      </Nav>
-      <Nav>
-        <Nav.Link href="/login">Login</Nav.Link>
-        <Nav.Link href="/signUp">Sign Up</Nav.Link>
-      </Nav>
+    <Navbar expand="lg" style={{ background: "#1f2833" }}>
+      <Navbar.Brand href="/home" style={{ color: "#66fcf1" }}>
+        Home
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="/teams" style={{ color: "#66fcf1" }}>
+            Teams
+          </Nav.Link>
+          <Nav.Link href="/standings" style={{ color: "#66fcf1" }}>
+            Standings
+          </Nav.Link>
+          <Nav.Link href="/discussion" style={{ color: "#66fcf1" }}>
+            Forum
+          </Nav.Link>
+        </Nav>
+        <Nav>
+          <Nav.Link href="/login" style={{ color: "#66fcf1" }}>
+            Login
+          </Nav.Link>
+          <Nav.Link href="/signUp" style={{ color: "#66fcf1" }}>
+            Sign Up
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 }

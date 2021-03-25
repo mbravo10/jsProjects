@@ -37,7 +37,7 @@ export default function Login() {
             <Col sm={5}>
               <h1>Login</h1>
               <Alert variant="info">
-                Login to see the posts and standings! ⚽️🏟
+                Login to see the posts and standings! ⚽️ 🏟
               </Alert>
               <Link to="/signUp">
                 <Button>Sign Up</Button>

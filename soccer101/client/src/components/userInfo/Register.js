@@ -7,9 +7,12 @@ import {
   Jumbotron,
   Alert,
 } from "react-bootstrap";
+import { connect } from "react-redux";
 import React, { useState, Fragment } from "react";
+import { setAlert } from "../../actions/alert";
+import PropTypes from "prop-types";
 
-export default function Register() {
+function Register({ setAlert }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,7 +29,7 @@ export default function Register() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("Success");
+    setAlert("Password sucks", "danger");
   };
 
   return (
@@ -90,3 +93,8 @@ export default function Register() {
     </Fragment>
   );
 }
+
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+};
+export default connect(null, { setAlert })(Register);

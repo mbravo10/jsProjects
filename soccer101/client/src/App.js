@@ -13,23 +13,30 @@ import Standings from "./components/Standings";
 import Forum from "./components/Forum";
 import Login from "./components/userInfo/Login";
 import Register from "./components/userInfo/Register";
+//Redux
+import { Provider } from "react-redux";
+import store from "./store";
+import Alert from "./components/styles/Alert";
 
 function App() {
   return (
-    <Router>
-      <NavBar />
-      <Switch>
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-        <Route path="/teams" component={Teams} />
-        <Route path="/standings" component={Standings} />
-        <Route path="/discussion" component={Forum} />
-        <Route path="/login" component={Login} />
-        <Route path="/signUp" component={Register} />
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <NavBar />
+        <Alert />
+        <Switch>
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
+          <Route path="/teams" component={Teams} />
+          <Route path="/standings" component={Standings} />
+          <Route path="/discussion" component={Forum} />
+          <Route path="/login" component={Login} />
+          <Route path="/signUp" component={Register} />
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
