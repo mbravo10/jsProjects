@@ -31,27 +31,24 @@ export default function Login() {
 
   return (
     <Fragment>
+      <Jumbotron fluid>
+        <Container>
+          <Row className="justify-content-md-center">
+            <Col sm={5}>
+              <h1>Login</h1>
+              <Alert variant="info">
+                Login to see the posts and standings! ⚽️🏟
+              </Alert>
+              <Link to="/signUp">
+                <Button>Sign Up</Button>
+              </Link>
+            </Col>
+          </Row>
+        </Container>
+      </Jumbotron>
       <Container>
-        <Jumbotron fluid>
-          <Container>
-            <Row className="justify-content-md-center">
-              <Col sm={5}>
-                <h1>Login to your account</h1>
-                <h6>
-                  In order to see the posts and standings, make sure you login.
-                </h6>
-                <Alert variant="info">
-                  If you don't have an account, create one
-                </Alert>
-                <Link to="/signUp">
-                  <Button variant="primary">Sign Up</Button>
-                </Link>
-              </Col>
-            </Row>
-          </Container>
-        </Jumbotron>
         <Row className="justify-content-md-center">
-          <Col xs={12}>
+          <Col xs={8}>
             <Form onSubmit={onSubmit}>
               <Form.Group controlId="formEmail">
                 <Form.Label>Email address</Form.Label>

@@ -1,4 +1,12 @@
-import { Form, Button, Container, Col, Row } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  Container,
+  Col,
+  Row,
+  Jumbotron,
+  Alert,
+} from "react-bootstrap";
 import React, { useState, Fragment } from "react";
 
 export default function Register() {
@@ -23,6 +31,16 @@ export default function Register() {
 
   return (
     <Fragment>
+      <Jumbotron fluid>
+        <Container>
+          <Row className="justify-content-md-center">
+            <Col sm={5}>
+              <h1>Sign up</h1>
+              <Alert variant="info">Happy to have you here 🥳</Alert>
+            </Col>
+          </Row>
+        </Container>
+      </Jumbotron>
       <Container>
         <Row className="justify-content-md-center">
           <Col xs={8}>
