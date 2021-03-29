@@ -10,9 +10,10 @@ import {
 import { connect } from "react-redux";
 import React, { useState, Fragment } from "react";
 import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-function Register({ setAlert }) {
+function Register({ setAlert, register }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,7 +30,8 @@ function Register({ setAlert }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setAlert("Password sucks", "danger");
+
+    register({ name, email, password });
   };
 
   return (
@@ -96,5 +98,6 @@ function Register({ setAlert }) {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
