@@ -8,12 +8,12 @@ import {
   Alert,
 } from "react-bootstrap";
 import React, { useState, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../actions/auth";
 
-export function Login({ login }) {
+export function Login({ login, isAuthenticated }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -31,6 +31,11 @@ export function Login({ login }) {
     e.preventDefault();
     login(email, password);
   };
+
+  //Redirect if logged in
+  if (isAuthenticated) {
+    return <Redirect to="/discussion" />;
+  }
 
   return (
     <Fragment>
@@ -90,6 +95,11 @@ export function Login({ login }) {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { login })(Login);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);
