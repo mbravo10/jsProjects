@@ -9,8 +9,11 @@ import {
 } from "react-bootstrap";
 import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { login } from "../../actions/auth";
 
-export default function Login() {
+export function Login({ login }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -26,7 +29,7 @@ export default function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("Success");
+    login(email, password);
   };
 
   return (
@@ -84,3 +87,9 @@ export default function Login() {
     </Fragment>
   );
 }
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+};
+
+export default connect(null, { login })(Login);
