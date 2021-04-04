@@ -14,7 +14,7 @@ import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 import { Redirect } from "react-router";
 
-function Register({ setAlert, register, isAuthenticated }) {
+function Register({ register, isAuthenticated }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",

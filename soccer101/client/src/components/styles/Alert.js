@@ -1,3 +1,8 @@
+/*
+ * Proptypes are to catch bugs with typechecking. React has built in typechecking abilities. Since we are receiving an array from response of the json errors object,
+ * we make sure that whats passed in is an array
+ */
+
 import React from "react";
 import { Alert } from "react-bootstrap";
 import PropTypes from "prop-types";

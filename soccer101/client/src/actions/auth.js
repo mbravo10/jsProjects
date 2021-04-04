@@ -48,6 +48,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(loadUser());
+    dispatch(setAlert("Succesfully Created User", "success", 7000));
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -78,6 +79,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(loadUser());
+    dispatch(setAlert("Logged In Succesfully", "success", 7000));
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
