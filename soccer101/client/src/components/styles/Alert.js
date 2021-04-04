@@ -26,4 +26,5 @@ const mapStateToProps = (state) => ({
   alerts: state.alert,
 });
 
+// Connect alert to redux store
 export default connect(mapStateToProps)(Alert1);

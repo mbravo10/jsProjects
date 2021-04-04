@@ -110,4 +110,6 @@ Register.propTypes = {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
+
+//Anytime the store is updated, mapStateToprops will be updated
 export default connect(mapStateToProps, { setAlert, register })(Register);
