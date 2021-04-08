@@ -1,46 +1,28 @@
 import { useEffect, useState } from "react";
-import { ListGroup } from "react-bootstrap";
-const axios = require("axios");
+import React from "react";
+import { Card } from "react-bootstrap";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-export default function Home() {
-  const [userInfo, setUserInfo] = useState([]);
-  const [loadedTeams, setLoadedTeams] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const userDataLoaded = userInfo.map((x, idx) => (
-    <ListGroup.Item as="li" key={idx}>
-      {x.bio}
-    </ListGroup.Item>
+const Posts = ({ posts }) => {
+  const postsThrough = posts.map((post, ind) => (
+    <Card border="primary" style={{ width: "25rem" }} key={ind}>
+      <Card.Header>{post.title}</Card.Header>
+      <Card.Body>
+        <Card.Text>{post.content}</Card.Text>
+      </Card.Body>
+    </Card>
   ));
 
-  const userTeamLoaded = loadedTeams.map((x, idx) => (
-    <ListGroup.Item as="li" key={idx}>
-      {x}
-    </ListGroup.Item>
-  ));
-  useEffect(() => {
-    renderUsers();
-  }, []);
+  return postsThrough;
+};
 
-  const renderUsers = async () => {
-    const res = await axios.get("http://localhost:5000/api/profile/");
-    let resMap = res.data;
-    let teams = res.data
-      .map((x) => x.teams)
-      .toString()
-      .split(",");
-    setLoadedTeams([...loadedTeams, ...teams]);
-    setUserInfo([...userInfo, ...resMap]);
-    setIsLoaded(true);
-  };
+Posts.PropTypes = {
+  posts: PropTypes.array.isRequired,
+};
 
-  return (
-    <>
-      <h1> The current users singed up favorite teams</h1>
-      <ListGroup horizontal="sm">
-        {isLoaded ? userDataLoaded : "Loading..."}
-      </ListGroup>
-      <ListGroup horizontal="sm">{isLoaded ? userTeamLoaded : "..."}</ListGroup>
-    </>
-  );
-}
+const mapStateToProps = (state) => ({
+  posts: state.posts,
+});
+
+export default connect(mapStateToProps)(Posts);

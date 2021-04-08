@@ -17,7 +17,6 @@ import Register from "./components/userInfo/Register";
 import { Provider } from "react-redux";
 import store from "./store";
 import Alert from "./components/styles/Alert";
-import Post from "./components/styles/posts";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 
@@ -35,7 +34,7 @@ function App() {
         <NavBar />
         <Alert />
         <Switch>
-          <Route exact path="/home" component={Post} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/">
             <Redirect to="/home" />
           </Route>
