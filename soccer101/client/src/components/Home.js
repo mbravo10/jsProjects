@@ -25,7 +25,10 @@ export default function Home() {
   const renderUsers = async () => {
     const res = await axios.get("http://localhost:5000/api/profile/");
     let resMap = res.data;
-    let teams = res.data.map((x) => x.teams);
+    let teams = res.data
+      .map((x) => x.teams)
+      .toString()
+      .split(",");
     setLoadedTeams([...loadedTeams, ...teams]);
     setUserInfo([...userInfo, ...resMap]);
     setIsLoaded(true);
