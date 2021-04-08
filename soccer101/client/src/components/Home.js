@@ -3,6 +3,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { loadPosts } from "../actions/auth";
 
 const Posts = ({ posts }) => {
   const postsThrough = posts.map((post, ind) => (
@@ -25,4 +26,4 @@ const mapStateToProps = (state) => ({
   posts: state.posts,
 });
 
-export default connect(mapStateToProps)(Posts);
+export default connect(mapStateToProps, { loadPosts })(Posts);

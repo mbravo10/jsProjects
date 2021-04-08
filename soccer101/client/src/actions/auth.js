@@ -91,3 +91,19 @@ export const login = (email, password) => async (dispatch) => {
     });
   }
 };
+
+//Load all posts
+export const loadPosts = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/api/profile");
+
+    dispatch({
+      type: "CURRENT_POSTS",
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: AUTH_ERROR,
+    });
+  }
+};
