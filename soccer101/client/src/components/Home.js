@@ -18,6 +18,7 @@ const Posts = ({ posts }) => {
         <Card.Text>{post.bio}</Card.Text>
         <Card.Text>My favorite teams: {teams[ind]}</Card.Text>
       </Card.Body>
+      <br />
     </Card>
   ));
 
