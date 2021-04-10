@@ -35,7 +35,7 @@ router.get("/me", auth, async (req, res) => {
 router.post(
   "/",
   auth,
-  check("teams", "At least one team is required").not().isEmpty(),
+  check("teams", "At least one team is required").notEmpty(),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
