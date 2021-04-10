@@ -7,6 +7,7 @@ import {
   AUTH_ERROR,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
+  CURRENT_POSTS,
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
@@ -98,9 +99,10 @@ export const loadPosts = () => async (dispatch) => {
     const res = await axios.get("/api/profile");
 
     dispatch({
-      type: "CURRENT_POSTS",
+      type: CURRENT_POSTS,
       payload: res.data,
     });
+    dispatch(setAlert("Posts loaded", "success"));
   } catch (error) {
     dispatch({
       type: AUTH_ERROR,

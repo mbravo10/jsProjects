@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import React from "react";
 import { Card } from "react-bootstrap";
 import PropTypes from "prop-types";
@@ -6,20 +7,20 @@ import { connect } from "react-redux";
 import { loadPosts } from "../actions/auth";
 
 const Posts = ({ posts }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadPosts());
+  }, [dispatch]);
   const postsThrough = posts.map((post, ind) => (
     <Card border="primary" style={{ width: "25rem" }} key={ind}>
-      <Card.Header>{post.title}</Card.Header>
+      <Card.Header>User: {post.user.name}</Card.Header>
       <Card.Body>
-        <Card.Text>{post.content}</Card.Text>
+        <Card.Text>{post.bio}</Card.Text>
       </Card.Body>
     </Card>
   ));
 
   return postsThrough;
-};
-
-Posts.PropTypes = {
-  posts: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -33,9 +33,9 @@ export function Login({ login, isAuthenticated }) {
   };
 
   //Redirect if logged in
-  if (isAuthenticated) {
+  /*if (isAuthenticated) {
     return <Redirect to="/discussion" />;
-  }
+  }*/
 
   return (
     <Fragment>
