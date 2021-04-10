@@ -19,6 +19,7 @@ import store from "./store";
 import Alert from "./components/styles/Alert";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
+import Profile from "./components/userInfo/Profile";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -41,6 +42,7 @@ function App() {
           <Route path="/teams" component={Teams} />
           <Route path="/standings" component={Standings} />
           <Route path="/discussion" component={Forum} />
+          <Route path="/profile" component={Profile} />
           <Route path="/login" component={Login} />
           <Route path="/signUp" component={Register} />
         </Switch>

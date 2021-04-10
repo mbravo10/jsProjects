@@ -109,3 +109,33 @@ export const loadPosts = () => async (dispatch) => {
     });
   }
 };
+
+// Create and update profile for user registered
+export const profile = (bio, teams) => async (dispatch) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const body = JSON.stringify({ bio, teams });
+
+  try {
+    const res = await axios.post("/api/profile", body, config);
+
+    dispatch({
+      type: "PROFILE_CREATED",
+      payload: res.data,
+    });
+    dispatch(setAlert("Profile is created", "success", 5000));
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+
+    dispatch({
+      type: LOGIN_FAIL,
+    });
+  }
+};
