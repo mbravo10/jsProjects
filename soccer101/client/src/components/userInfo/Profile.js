@@ -24,7 +24,6 @@ export function Profile({ profile, isAuthenticated }) {
     let name = e.target.name;
     let value = e.target.value;
     setFormData({ ...formData, [name]: value });
-    console.log(teams);
   };
 
   const onSubmit = async (e) => {

@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { connect } from "react-redux";
-import "./styles/navBar.css";
 
 export function NavBar({ isAuthenticated }) {
   if (isAuthenticated) {
