@@ -8,11 +8,11 @@ import {
   Alert,
 } from "react-bootstrap";
 import React, { useState, Fragment } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { profile } from "../../actions/auth";
+import { profile, deleteProfile } from "../../actions/auth";
 
-export function Profile({ profile, isAuthenticated }) {
+export function Profile({ profile, deleteProfile }) {
   const [formData, setFormData] = useState({
     bio: "",
     teams: "",
@@ -29,6 +29,11 @@ export function Profile({ profile, isAuthenticated }) {
   const onSubmit = async (e) => {
     e.preventDefault();
     profile(bio, teams);
+  };
+
+  const onDelete = async (e) => {
+    e.preventDefault();
+    deleteProfile();
   };
 
   return (
@@ -56,7 +61,8 @@ export function Profile({ profile, isAuthenticated }) {
                 <Form.Group controlId="formBio">
                   <Form.Label>Short Bio</Form.Label>
                   <Form.Control
-                    type="text"
+                    as="textarea"
+                    rows={2}
                     placeholder="Enter a short bio"
                     name="bio"
                     value={bio}
@@ -76,7 +82,11 @@ export function Profile({ profile, isAuthenticated }) {
                 </Form.Group>
                 <Button variant="primary" type="submit">
                   Submit
+                  <br />
                 </Button>
+              </Form>
+              <Form onSubmit={onDelete}>
+                <Button type="danger">Delete profile and user</Button>
               </Form>
             </Col>
           </Row>
@@ -87,7 +97,7 @@ export function Profile({ profile, isAuthenticated }) {
 }
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  token: state.auth.token,
 });
 
-export default connect(mapStateToProps, { profile })(Profile);
+export default connect(mapStateToProps, { profile, deleteProfile })(Profile);

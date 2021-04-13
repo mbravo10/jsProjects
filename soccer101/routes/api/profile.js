@@ -49,7 +49,7 @@ router.post(
     profileFields.user = req.user.id;
     if (bio) profileFields.bio = bio;
     if (teams) {
-      profileFields.teams = teams.split(", ").map((skill) => skill.trim());
+      profileFields.teams = teams.split(" ,").map((skill) => skill.trim());
     }
 
     try {
