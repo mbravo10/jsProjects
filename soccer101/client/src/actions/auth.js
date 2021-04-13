@@ -8,6 +8,8 @@ import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
   CURRENT_POSTS,
+  PROFILE_DELETED,
+  PROFILE_CREATED,
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
@@ -124,7 +126,7 @@ export const profile = (bio, teams) => async (dispatch) => {
     const res = await axios.post("/api/profile", body, config);
 
     dispatch({
-      type: "PROFILE_CREATED",
+      type: PROFILE_CREATED,
       payload: res.data,
     });
     dispatch(setAlert("Profile is created", "success", 5000));
@@ -143,14 +145,14 @@ export const profile = (bio, teams) => async (dispatch) => {
 //Delete profile and user
 export const deleteProfile = (token) => async (dispatch) => {
   try {
-    await axios.delete("/api/profile", {
+    const res = await axios.delete("/api/profile", {
       headers: { "x-auth-token": localStorage.getItem("token") },
     });
 
     dispatch({
-      type: "PROFILE_DELETED",
+      type: PROFILE_DELETED,
     });
-    dispatch(setAlert("Profile and user is deleted", "success", 5000));
+    dispatch(setAlert(res.data.msg, "success", 5000));
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {

@@ -7,3 +7,5 @@ export const AUTH_ERROR = "AUTH_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const CURRENT_POSTS = "CURRENT_POSTS";
+export const PROFILE_DELETED = "PROFILE_DELETED";
+export const PROFILE_CREATED = "PROFILE_CREATED";
