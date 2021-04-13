@@ -112,6 +112,23 @@ export const loadPosts = () => async (dispatch) => {
   }
 };
 
+//Load all teams
+export const loadTeams = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/api/teams");
+
+    dispatch({
+      type: CURRENT_POSTS,
+      payload: res.data,
+    });
+    dispatch(setAlert("Teams loaded", "success"));
+  } catch (error) {
+    dispatch({
+      type: AUTH_ERROR,
+    });
+  }
+};
+
 // Create and update profile for user registered
 export const profile = (bio, teams) => async (dispatch) => {
   const config = {
