@@ -23,7 +23,7 @@ export function NavBar({ isAuthenticated }) {
               Forum
             </Nav.Link>
             <Nav.Link href="/profile" style={{ color: "#66fcf1" }}>
-              Create Profile
+              Edit Profile
             </Nav.Link>
           </Nav>
           <Nav>

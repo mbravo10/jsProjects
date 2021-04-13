@@ -143,7 +143,7 @@ export const profile = (bio, teams) => async (dispatch) => {
 };
 
 //Delete profile and user
-export const deleteProfile = (token) => async (dispatch) => {
+export const deleteProfile = () => async (dispatch) => {
   try {
     const res = await axios.delete("/api/profile", {
       headers: { "x-auth-token": localStorage.getItem("token") },

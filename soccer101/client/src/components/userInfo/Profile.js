@@ -6,6 +6,7 @@ import {
   Row,
   Jumbotron,
   Alert,
+  Modal,
 } from "react-bootstrap";
 import React, { useState, Fragment } from "react";
 import { Link } from "react-router-dom";
@@ -17,6 +18,10 @@ export function Profile({ profile, deleteProfile }) {
     bio: "",
     teams: "",
   });
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const { bio, teams } = formData;
 
@@ -42,9 +47,9 @@ export function Profile({ profile, deleteProfile }) {
         <Container>
           <Row className="justify-content-md-center">
             <Col sm={5}>
-              <h1>Create a user profile</h1>
+              <h1>Edit or Create a user profile</h1>
               <Alert variant="info">
-                Create a profile to describe who you are! ⚽️ 🏟
+                Create or Edit a profile to describe who you are! ⚽️ 🏟
               </Alert>
               <Link to="/signUp">
                 <Button>Sign Up</Button>
@@ -80,14 +85,32 @@ export function Profile({ profile, deleteProfile }) {
                     onChange={onChange}
                   />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" block>
                   Submit
-                  <br />
                 </Button>
               </Form>
-              <Form onSubmit={onDelete}>
-                <Button type="danger">Delete profile and user</Button>
-              </Form>
+              <br />
+
+              <Button variant="danger" block onClick={handleShow}>
+                Delete profile and user
+              </Button>
+              <Modal show={show} onHide={handleClose}>
+                <Modal.Body>Are you sure you want to delete?</Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button
+                    variant="primary"
+                    onClick={(e) => {
+                      handleClose();
+                      onDelete(e);
+                    }}
+                  >
+                    Delete
+                  </Button>
+                </Modal.Footer>
+              </Modal>
             </Col>
           </Row>
         </Container>

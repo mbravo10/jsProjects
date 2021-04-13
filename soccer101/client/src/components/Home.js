@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { loadPosts } from "../actions/auth";
 import "./styles.css";
 
-const Posts = ({ posts }) => {
+const Posts = ({ posts, isLoaded }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadPosts());
@@ -36,11 +36,12 @@ const Posts = ({ posts }) => {
     </>
   ));
 
-  return postsThrough;
+  return !isLoaded ? postsThrough : <h1>Loading...</h1>;
 };
 
 const mapStateToProps = (state) => ({
   posts: state.posts,
+  isLoaded: state.loading,
 });
 
 export default connect(mapStateToProps, { loadPosts })(Posts);
