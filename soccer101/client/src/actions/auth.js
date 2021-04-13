@@ -164,3 +164,26 @@ export const deleteProfile = () => async (dispatch) => {
     });
   }
 };
+
+//Get teams of Premier League
+export const getTeams = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/api/profile", {
+      headers: { "x-auth-token": localStorage.getItem("token") },
+    });
+
+    dispatch({
+      type: PROFILE_DELETED,
+    });
+    dispatch(setAlert(res.data.msg, "success", 5000));
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+
+    dispatch({
+      type: LOGIN_FAIL,
+    });
+  }
+};
