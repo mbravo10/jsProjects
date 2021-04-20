@@ -29,9 +29,7 @@ export function Login({ login, isAuthenticated }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (login(email, password)) {
-      return <Redirect to="/discussion" />;
-    }
+    login(email, password);
   };
 
   if (isAuthenticated) {

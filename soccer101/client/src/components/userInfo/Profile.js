@@ -9,11 +9,11 @@ import {
   Modal,
 } from "react-bootstrap";
 import React, { useState, Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { profile, deleteProfile } from "../../actions/auth";
+import { profile, deleteProfile, logout } from "../../actions/auth";
 
-export function Profile({ profile, deleteProfile }) {
+export function Profile({ profile, deleteProfile, logout, token }) {
   const [formData, setFormData] = useState({
     bio: "",
     teams: "",
@@ -40,6 +40,13 @@ export function Profile({ profile, deleteProfile }) {
     e.preventDefault();
     deleteProfile();
   };
+
+  const onLogout = async (e) => {
+    e.preventDefault();
+    logout();
+  };
+
+  if (!token) return <Redirect to="/home" />;
 
   return (
     <Fragment>
@@ -91,6 +98,10 @@ export function Profile({ profile, deleteProfile }) {
               </Form>
               <br />
 
+              <Button variant="primary" block onClick={onLogout}>
+                Logout
+              </Button>
+              <br />
               <Button variant="danger" block onClick={handleShow}>
                 Delete profile and user
               </Button>
@@ -123,4 +134,6 @@ const mapStateToProps = (state) => ({
   token: state.auth.token,
 });
 
-export default connect(mapStateToProps, { profile, deleteProfile })(Profile);
+export default connect(mapStateToProps, { profile, deleteProfile, logout })(
+  Profile
+);

@@ -95,6 +95,21 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
+// Logout User
+export const logout = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: "LOGOUT",
+    });
+    dispatch(setAlert("Logged Out Succesfully", "success", 6000));
+  } catch (err) {
+    console.error(err);
+    dispatch({
+      type: LOGIN_FAIL,
+    });
+  }
+};
+
 //Load all posts
 export const loadPosts = () => async (dispatch) => {
   try {
