@@ -29,13 +29,14 @@ export function Login({ login, isAuthenticated }) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
+    if (login(email, password)) {
+      return <Redirect to="/discussion" />;
+    }
   };
 
-  //Redirect if logged in
-  /*if (isAuthenticated) {
+  if (isAuthenticated) {
     return <Redirect to="/discussion" />;
-  }*/
+  }
 
   return (
     <Fragment>

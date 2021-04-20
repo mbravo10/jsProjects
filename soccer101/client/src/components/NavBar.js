@@ -23,15 +23,12 @@ export function NavBar({ isAuthenticated }) {
               Forum
             </Nav.Link>
             <Nav.Link href="/profile" style={{ color: "#66fcf1" }}>
-              Edit Profile
+              Profile
             </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="/login" style={{ color: "#66fcf1" }}>
-              Login
-            </Nav.Link>
-            <Nav.Link href="/signUp" style={{ color: "#66fcf1" }}>
-              Sign Up
+            <Nav.Link href="/logout" style={{ color: "#66fcf1" }}>
+              Logout
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

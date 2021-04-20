@@ -35,9 +35,9 @@ function Register({ register, isAuthenticated }) {
     register({ name, email, password });
   };
 
-  /*if (isAuthenticated) {
+  if (isAuthenticated) {
     return <Redirect to="/discussion" />;
-  }*/
+  }
 
   return (
     <Fragment>

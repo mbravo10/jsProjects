@@ -7,7 +7,7 @@ const APIKEY = config.get("soccerAPI");
 const URL = "https://api.football-data.org/v2/competitions/2021/teams";
 
 //To create a route we do
-// @Route    GET api/posts/:id
+// @Route    GET api/teams/
 // @Desc     Get posts by ID
 // @access   Private
 router.get("/", auth, async (req, res) => {
