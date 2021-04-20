@@ -10,6 +10,7 @@ import {
   CURRENT_POSTS,
   PROFILE_DELETED,
   PROFILE_CREATED,
+  LOGOUT,
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
@@ -99,7 +100,7 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     dispatch({
-      type: "LOGOUT",
+      type: LOGOUT,
     });
     dispatch(setAlert("Logged Out Succesfully", "success", 6000));
   } catch (err) {

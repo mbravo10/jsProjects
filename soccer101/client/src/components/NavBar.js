@@ -27,7 +27,7 @@ export function NavBar({ isAuthenticated }) {
             </Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link href="/logout" style={{ color: "#66fcf1" }}>
+            <Nav.Link href="/profile" style={{ color: "#66fcf1" }}>
               Logout
             </Nav.Link>
           </Nav>
