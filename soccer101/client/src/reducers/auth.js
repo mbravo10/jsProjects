@@ -21,7 +21,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
   loading: true,
-  user: null,
+  user: "",
 };
 
 export default function authReducer(state = initialState, action) {
@@ -56,7 +56,7 @@ export default function authReducer(state = initialState, action) {
         token: null,
         isAuthenticated: false,
         loading: false,
-        user: null,
+        user: "",
       };
     case PROFILE_CREATED:
     default:

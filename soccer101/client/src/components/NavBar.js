@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { connect } from "react-redux";
 
-export function NavBar({ isAuthenticated }) {
+export function NavBar({ isAuthenticated, user }) {
   if (isAuthenticated) {
     return (
       <Navbar expand="lg" style={{ background: "#1f2833" }}>
@@ -27,6 +27,14 @@ export function NavBar({ isAuthenticated }) {
             </Nav.Link>
           </Nav>
           <Nav>
+            <Navbar.Collapse className="justify-content-md">
+              <Navbar.Text style={{ color: "#c5c6c7" }}>
+                Welcome,{" "}
+                <a href="/profile" style={{ color: "#c5c6c7" }}>
+                  {user}
+                </a>
+              </Navbar.Text>
+            </Navbar.Collapse>
             <Nav.Link href="/profile" style={{ color: "#66fcf1" }}>
               Logout
             </Nav.Link>
@@ -69,6 +77,7 @@ export function NavBar({ isAuthenticated }) {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user.name,
 });
 
 export default connect(mapStateToProps)(NavBar);
