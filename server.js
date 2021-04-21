@@ -22,7 +22,7 @@ app.use("/api/teams", require("./routes/api/teams"));
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
   //Set static folder
-  //Deployment
+  //Deployment for more
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
