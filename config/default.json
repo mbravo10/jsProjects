@@ -1,0 +1,5 @@
+{
+    "mongoURI": "mongodb+srv://marioB:mezdyb-Zamwyj-5pumga@cluster0.lqmrn.mongodb.net/Cluster0?retryWrites=true&w=majority",
+    "jwtSecret": "mySecretToken",
+    "soccerAPI": "062cad4afae84cf5be7f6c51fdbf6f86"
+}
