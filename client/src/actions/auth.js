@@ -128,6 +128,22 @@ export const loadPosts = () => async (dispatch) => {
   }
 };
 
+export const loadDiscussions = () => async (dispatch) => {
+  try {
+    const res = await axios.get("/api/posts");
+
+    dispatch({
+      type: CURRENT_POSTS,
+      payload: res.data,
+    });
+    dispatch(setAlert("Discussions loaded", "success"));
+  } catch (error) {
+    dispatch({
+      type: AUTH_ERROR,
+    });
+  }
+};
+
 //Load all teams
 export const loadTeams = () => async (dispatch) => {
   try {
