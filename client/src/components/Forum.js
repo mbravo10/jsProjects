@@ -12,13 +12,13 @@ function Forum({ posts, isAuthenticated }) {
     <Card>
       <Card.Header>{x.name}</Card.Header> {x.text}{" "}
       <Card.Footer>
+        <Button variant="info" size="sm" style={{ marginRight: "360px" }}>
+          {" "}
+          Like{" "}
+        </Button>
         <Button variant="danger" size="sm">
           {" "}
           Delete post
-        </Button>
-        <Button variant="info" size="sm">
-          {" "}
-          Like{" "}
         </Button>
       </Card.Footer>
     </Card>
