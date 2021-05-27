@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "weather-status",
+  "version": "1.0.0",
+  "description": "Weather info for RasPI",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "Mario B",
+  "license": "MIT"
+}
