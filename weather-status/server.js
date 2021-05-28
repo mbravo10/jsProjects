@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const weather = require("./api/router");
+const weather = require("./api/weather");
 
 const PORT = 3000;
 
