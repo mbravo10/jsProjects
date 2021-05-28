@@ -1,5 +1,8 @@
 {
   "dependencies": {
+    "axios": "^0.21.1",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "scripts": {
@@ -9,7 +12,6 @@
   "version": "1.0.0",
   "description": "Weather info for RasPI",
   "main": "server.js",
-  "devDependencies": {},
   "author": "Mario B",
   "license": "MIT"
 }
