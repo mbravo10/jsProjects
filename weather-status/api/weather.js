@@ -5,11 +5,11 @@ const config = require("config");
 const API = "https://api.openweathermap.org/data/2.5/weather";
 const KEY = config.get("WEATHER");
 
-router.get("/", async (req, res) => {
+router.get("/:city", async (req, res) => {
   try {
-    var city = "Denver";
+    console.log(req.params.city);
     const info = await axios.get(API, {
-      params: { q: city, appid: KEY },
+      params: { q: req.params.city, appid: KEY, units: "imperial" },
     });
 
     res.json(info.data);
