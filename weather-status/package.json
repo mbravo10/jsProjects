@@ -3,10 +3,12 @@
     "axios": "^0.21.1",
     "config": "^3.3.6",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node-blink-security": "^4.1.5",
+    "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "name": "weather-status",
   "version": "1.0.0",

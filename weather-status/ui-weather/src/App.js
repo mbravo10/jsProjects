@@ -1,4 +1,3 @@
-import { Button } from "react-bootstrap";
 import CardData from "./main/weather";
 
 function App() {
