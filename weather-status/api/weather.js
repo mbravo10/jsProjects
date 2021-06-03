@@ -19,4 +19,22 @@ router.get("/:city", async (req, res) => {
   }
 });
 
+router.get("/:lat/:lon", async (req, res) => {
+  try {
+    const info = await axios.get(API, {
+      params: {
+        lat: req.params.lat,
+        lon: req.params.lon,
+        appid: KEY,
+        units: "imperial",
+      },
+    });
+
+    res.json(info.data);
+  } catch (e) {
+    console.log(e);
+    res.send("There was an error");
+  }
+});
+
 module.exports = router;
